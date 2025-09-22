@@ -1,6 +1,9 @@
 import styles from "./index.module.css";
-const OutputScreen = () => {
-    return <div className={styles.outputScreen}>Output Screen Component</div>
+type Props={
+    output?:string;
+}
+const OutputScreen = ({output}:Props) => {
+    return <div className={styles.outputScreen}>{output}</div>
 }
 
 export default OutputScreen;
