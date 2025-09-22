@@ -3,4 +3,6 @@
   flex-direction: row;
   width: 100vw;
   height: 100vh;
+  padding: 20px;
+  box-sizing: border-box; /* Ensure padding is included in total width and height */
 }
