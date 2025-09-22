@@ -6,3 +6,12 @@
   padding: 20px;
   box-sizing: border-box; /* Ensure padding is included in total width and height */
 }
+
+
+.mobile_page{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+}
