@@ -1,10 +1,17 @@
 import { useState } from "react";
 import styles from "./index.module.css";
+import { placeHolderText } from "./const";
+import EditorHeader from "./Header";
 const Editor = () => {
 
-    const [javaScriptCode, setJavaScriptCode] = useState("");
-    return <textarea className={styles.editor} value={javaScriptCode} onChange={(e) => setJavaScriptCode(e.target.value)} 
-    placeholder="Write your JavaScript code here..." />;
+    const [javaScriptCode, setJavaScriptCode] = useState(placeHolderText);
+    return (
+        <div className={styles.editor}>
+            <EditorHeader/>
+            <textarea className={styles.textarea} value={javaScriptCode} onChange={(e) => setJavaScriptCode(e.target.value)} 
+            placeholder="" />
+        </div>
+    );
 }
 
 export default Editor;
