@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <Editor setOutput={setOutput} />
-      <OutputScreen output={output} />
+      <OutputScreen output={output} setOutput={setOutput} />
     </div>
   );
 }
