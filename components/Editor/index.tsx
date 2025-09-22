@@ -24,8 +24,15 @@ const Editor = ({ setOutput }: Props) => {
             logs.push("\n\n=== Code Execution Successful ===");
             setOutput(logs.join("\n"));
         }
-        catch (err) {
-            setOutput(String(err));
+        catch (err: unknown) {
+            const logs: string[] = [];
+            if (err instanceof Error) {
+                logs.push(`Error: ${err.message}`);
+            } else {
+                logs.push(`Error: ${String(err)}`);
+            }
+            logs.push("\n=== Code Execution Failed ===");
+            setOutput(logs.join("\n"));
         }
     }
     return (
