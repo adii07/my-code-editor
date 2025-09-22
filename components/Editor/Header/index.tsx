@@ -1,7 +1,10 @@
 import styles from "./index.module.css";
-const EditorHeader=()=>{
+type Props={
+    clickRun?:()=>void;
+}
+const EditorHeader=({clickRun}:Props)=>{
 return <div className={styles.editorHeader}>
-    <button className={styles.button}>Run</button>
+    <button className={styles.button} onClick={clickRun}>Run</button>
 </div>
 }
 
