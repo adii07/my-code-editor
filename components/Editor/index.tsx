@@ -12,7 +12,7 @@ const Editor = ({ setOutput }: Props) => {
 
     const runCode = () => {
         try {
-            const logs: any[] = [];
+            const logs: string[] = [];
             const originalConsoleLog = console.log;
             // Capture console.log
             console.log = (...args) => logs.push(args.join(" "));
