@@ -21,6 +21,7 @@ const Editor = ({ setOutput }: Props) => {
             new Function(javaScriptCode)();
             // Restore console.log
             console.log = originalConsoleLog;
+            logs.push("\n\n=== Code Execution Successful ===");
             setOutput(logs.join("\n"));
         }
         catch (err) {
