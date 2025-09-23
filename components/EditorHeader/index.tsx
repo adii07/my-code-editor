@@ -1,3 +1,4 @@
+import Selector from "../Selector";
 import styles from "./index.module.css";
 type Props = {
     clickRun?: () => void;
@@ -9,7 +10,7 @@ const EditorHeader = ({ clickRun, title, buttonText }: Props) => {
 
     return (
         <div className={styles.editorHeader}>
-            <div className={styles.title}>{title}</div>
+            {title=='Output'?<div className={styles.title}>{title}</div>:<Selector/>}
             <button className={`${styles.button} ${styles[variant]}`} onClick={clickRun}>{buttonText}</button>
         </div>
     )

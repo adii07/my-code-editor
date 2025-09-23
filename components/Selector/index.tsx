@@ -1,9 +1,9 @@
 import { usePathname } from "next/navigation";
 import styles from "./index.module.css";
+import { useEffect, useState } from "react";
 
 const Selector = () => {
-
-    const languages = ["JavaScript", "TypeScript"];
+    const[selectedLanguage,setSelectedLanguage]=useState("");
     const pathname = usePathname();
     const redirect = (lang: string) => {
         switch (lang) {
@@ -17,23 +17,39 @@ const Selector = () => {
                 window.location.href = "/javascript";
         }
     }
-
-    const getTitle = (lang: string) => {
-        switch (lang) {
-            case "JavaScript":
-                return "JS";
-            case "TypeScript":
-                return "TS";
-            default:
-                return "JS";
+    const selectLanguage=(lang:string)=>{
+        if (lang ==="JavaScript" && pathname!=="/javascript"){
+            redirect("JavaScript");
+        }
+        else if (lang ==="TypeScript" && pathname!=="/typescript"){
+            redirect("TypeScript");
         }
     }
 
+    const getLanguageFromPathname = (pathname: string) => {
+        switch (pathname) {
+            case "/javascript":
+                return "JavaScript";
+            case "/typescript":
+                return "TypeScript";
+            default:
+                return "";
+        }
+    }
+
+    useEffect(() => {
+        const lang = getLanguageFromPathname(pathname);
+        setSelectedLanguage(lang);
+    }, [pathname]);
     return (
-        <div className={styles.selector}>
-            {languages.map((lang) => (
-                <div key={lang} className={pathname.includes(lang.toLowerCase()) ? `${styles.language} ${styles.active}` : styles.language} onClick={() => redirect(lang)}>{getTitle(lang)}</div>
-            ))}
+        <div >
+            <select id="language" name="language" className={styles.selector} value={selectedLanguage || ""} onChange={(e) => { selectLanguage(e.target.value) }}>
+                <option value="" disabled hidden>
+                    Select a language...
+                </option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="TypeScript">TypeScript</option>
+            </select>
         </div>
     )
 }
