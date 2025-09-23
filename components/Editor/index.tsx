@@ -1,5 +1,7 @@
 import styles from "./index.module.css";
 import EditorHeader from "../EditorHeader";
+import { useParams } from "next/navigation";
+import ts from "typescript";
 
 type Props = {
     setOutput: React.Dispatch<React.SetStateAction<string>>;
@@ -7,16 +9,28 @@ type Props = {
     setJavaScriptCode: React.Dispatch<React.SetStateAction<string>>;
 }
 const Editor = ({ setOutput, javaScriptCode, setJavaScriptCode }: Props) => {
-
+    const params = useParams();
+    const language = params.language;
     const runCode = () => {
         try {
             const logs: string[] = [];
             const originalConsoleLog = console.log;
             // Capture console.log
+            console.log(language, 'help', language === "typescript");
             console.log = (...args) => logs.push(args.join(" "));
 
+            let executableCode = javaScriptCode;
+
+            if (language === "typescript") {
+                // Transpile TypeScript to JavaScript
+                executableCode = ts.transpile(javaScriptCode, {
+                    target: ts.ScriptTarget.ES2020,
+                    module: ts.ModuleKind.ESNext,
+                });
+            }
+
             // Execute JS code
-            new Function(javaScriptCode)();
+            new Function(executableCode)();
             // Restore console.log
             console.log = originalConsoleLog;
             logs.push("\n\n=== Code Execution Successful ===");
@@ -33,6 +47,8 @@ const Editor = ({ setOutput, javaScriptCode, setJavaScriptCode }: Props) => {
             setOutput(logs.join("\n"));
         }
     }
+
+
     return (
         <div className={styles.editor}>
             <EditorHeader clickRun={runCode} title={"Input"} buttonText={"Run"} />
