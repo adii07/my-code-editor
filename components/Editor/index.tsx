@@ -1,14 +1,12 @@
-import { useState } from "react";
 import styles from "./index.module.css";
-import { placeHolderText } from "./const";
 import EditorHeader from "../EditorHeader";
 
 type Props = {
     setOutput: React.Dispatch<React.SetStateAction<string>>;
+    javaScriptCode: string;
+    setJavaScriptCode: React.Dispatch<React.SetStateAction<string>>;
 }
-const Editor = ({ setOutput }: Props) => {
-
-    const [javaScriptCode, setJavaScriptCode] = useState(placeHolderText);
+const Editor = ({ setOutput, javaScriptCode, setJavaScriptCode }: Props) => {
 
     const runCode = () => {
         try {
