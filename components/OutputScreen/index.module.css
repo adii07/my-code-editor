@@ -1,8 +1,10 @@
 .outputScreen{
     flex: 1;
-    border: 1px solid #ccc;
+    /* border: 1px solid #464A53; */
     display: flex;
     flex-direction: column;
+
+  border-left: 1px solid #464A53;
 }
 
 .outputContent{
@@ -10,7 +12,7 @@
     padding: 10px;
     width: 100%;
     height: 100%;
-    background-color: #f0f0f0;
+    background-color: #101922;
     box-sizing: border-box;
     font-size: 16px;
 }

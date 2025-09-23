@@ -7,7 +7,6 @@ import { useWindowSize } from "../../../hooks/isDesktop";
 import MobileHeader from "../../../components/MobileHeader";
 import Header from "../../../components/Header";
 import { placeHolderText } from "../../../components/Editor/const";
-import Selector from "../../../components/Selector";
 
 export default function Home() {
   const [output, setOutput] = useState("");
@@ -20,7 +19,6 @@ export default function Home() {
     <div className={styles.main_container}>
      <Header/>
       {isDesktop ? <div className={styles.page}>
-        <Selector />
         <Editor setOutput={setOutput} javaScriptCode={input} setJavaScriptCode={setInput} />
         <OutputScreen output={output} setOutput={setOutput} />
       </div> :
