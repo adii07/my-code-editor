@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import Editor from "../../../components/Editor";
 import OutputScreen from "../../../components/OutputScreen";
 import styles from "./page.module.css";
@@ -14,7 +14,9 @@ export default function Home() {
   const { isDesktop } = useWindowSize();
   const [selectedTab, setSelectedTab] = useState<"input" | "output">("input");
 
-  useEffect(() => { if (!isDesktop) setSelectedTab("output") }, [output]);
+  if(isDesktop===null){
+    return <div className={styles.main_container}></div>
+  }
   return (
     <div className={styles.main_container}>
      <Header/>
