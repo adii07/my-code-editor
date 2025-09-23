@@ -1,24 +1,30 @@
-.editorHeader{
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 20px 0px;
+  align-items: center;
+}
+
+.titleText {
+  margin: 0;
+}
+
+.subtitle {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 14px;
 }
 
-.button{
-    padding: 5px 10px;
-    border-radius: 10px;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
+.subtitleText1{
+    color: rgb(65, 65, 65);
+}
+
+.subtitleText2{
+    color: rgb(24, 24, 24);
+    font-size: 12px;
     font-weight: bold;
-}
-
-.button.primary{
-     background-color: rgb(57, 75, 236);
-}   
-
-.button.secondary{
-    background-color: rgb(170, 41, 41);
+    cursor: pointer;
 }

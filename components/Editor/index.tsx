@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./index.module.css";
 import { placeHolderText } from "./const";
-import EditorHeader from "../Header";
+import EditorHeader from "../EditorHeader";
 
 type Props = {
     setOutput: React.Dispatch<React.SetStateAction<string>>;

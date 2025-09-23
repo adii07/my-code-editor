@@ -1,4 +1,4 @@
-import EditorHeader from "../Header";
+import EditorHeader from "../EditorHeader";
 import styles from "./index.module.css";
 type Props={
     output?:string;

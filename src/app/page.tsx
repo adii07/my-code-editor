@@ -5,6 +5,7 @@ import OutputScreen from "../../components/OutputScreen";
 import styles from "./page.module.css";
 import { useWindowSize } from "../../hooks/isDesktop";
 import MobileHeader from "../../components/MobileHeader";
+import Header from "../../components/Header";
 
 export default function Home() {
   const [output, setOutput] = useState("");
@@ -13,7 +14,8 @@ export default function Home() {
 
   useEffect(() => { if (!isDesktop) setSelectedTab("output") }, [output]);
   return (
-    <>
+    <div className={styles.main_container}>
+     <Header/>
       {isDesktop ? <div className={styles.page}>
         <Editor setOutput={setOutput} />
         <OutputScreen output={output} setOutput={setOutput} />
@@ -24,7 +26,7 @@ export default function Home() {
           {selectedTab === "output" && <OutputScreen output={output} setOutput={setOutput} />}
         </div>
       }
-    </>
+    </div>
 
   );
 }
